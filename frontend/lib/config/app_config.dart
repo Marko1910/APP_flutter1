@@ -1,14 +1,14 @@
 class AppConfig {
   // URL base de la API.
   //
-  // Por defecto apunta a 10.0.2.2 que, desde el emulador de Android, es el
-  // "localhost" de tu PC (donde corre el backend). Para web/escritorio usa
-  // http://localhost:3000/api.
+  // Por defecto (Reto 1) apunta al backend desplegado en la nube (Render).
+  // Asi la app funciona en cualquier dispositivo sin configuracion extra.
   //
-  // En produccion (Reto 1) pasa la URL publica del backend en la nube:
-  //   flutter run --dart-define=API_BASE_URL=https://tu-app.onrender.com/api
+  // Para desarrollo local puedes sobreescribirla con --dart-define:
+  //   Web/escritorio: flutter run --dart-define=API_BASE_URL=http://localhost:3000/api
+  //   Emulador Android: flutter run --dart-define=API_BASE_URL=http://10.0.2.2:3000/api
   static const String apiBaseUrl = String.fromEnvironment(
     'API_BASE_URL',
-    defaultValue: 'http://10.0.2.2:3000/api',
+    defaultValue: 'https://crud-empresas-api.onrender.com/api',
   );
 }

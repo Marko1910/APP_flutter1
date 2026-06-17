@@ -16,7 +16,7 @@ con autenticacion **JWT**, relaciones **1-a-muchos** y mejoras de **UX**.
 | **2. Seguridad (JWT)** | Modelo Usuario, registro/login, token JWT, rutas protegidas; login en Flutter, token guardado en el dispositivo y enviado en cada peticion (`Authorization: Bearer`) | ✅ |
 | **3. Relaciones** | Modelo Empleado con relacion 1-a-muchos con Empresa; lista de empleados en el detalle y boton flotante para agregarlos a esa empresa | ✅ |
 | **4. UX y Busqueda** | Barra de busqueda por nombre/RUC, `Dismissible` (swipe para borrar), `RefreshIndicator` (pull to refresh) y `SnackBar` rojo ante errores | ✅ |
-| **1. Infraestructura y Nube** | Despliegue de BD y backend en la nube. El codigo ya esta preparado (`DATABASE_URL` + `DB_SSL` en el backend, `--dart-define=API_BASE_URL` en el frontend) | ⏳ Pendiente de desplegar |
+| **1. Infraestructura y Nube** | Base de datos en **Neon**, backend desplegado en **Render** (`render.yaml`), frontend apuntando a la URL publica por defecto. Secretos gestionados como variables de entorno en Render | ✅ |
 
 ## Como correrlo en local
 
@@ -36,12 +36,20 @@ Al conectar, Sequelize crea las tablas automaticamente.
 cd frontend
 flutter pub get
 
-# Web / escritorio (apunta al backend local):
-flutter run -d chrome --dart-define=API_BASE_URL=http://localhost:3000/api
+# Por defecto la app ya apunta al backend en la nube (Render):
+flutter run -d chrome
 
-# Emulador Android (10.0.2.2 = localhost del PC):
-flutter run            # usa el valor por defecto del codigo
+# Para usar el backend LOCAL en su lugar, sobreescribe la URL:
+flutter run -d chrome --dart-define=API_BASE_URL=http://localhost:3000/api
+flutter run            --dart-define=API_BASE_URL=http://10.0.2.2:3000/api  # emulador Android
 ```
+
+## Demo en produccion
+
+- **Backend (Render):** https://crud-empresas-api.onrender.com
+- **Base de datos:** Neon (PostgreSQL en la nube)
+
+> Nota: el plan free de Render "duerme" tras inactividad; la primera peticion puede tardar ~50s en despertar.
 
 ## Variables de entorno (backend)
 
