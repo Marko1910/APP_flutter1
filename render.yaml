@@ -1,0 +1,26 @@
+# Blueprint de Render para desplegar el backend (Reto 1).
+# En Render: New + > Blueprint > conecta este repo y aplica.
+# Solo tendras que pegar DATABASE_URL (la cadena de Neon) cuando te lo pida.
+services:
+  - type: web
+    name: crud-empresas-api
+    runtime: node
+    rootDir: backend
+    plan: free
+    region: oregon
+    branch: main
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /
+    envVars:
+      # La cadena de conexion de Neon (la pegas tu en el panel de Render).
+      - key: DATABASE_URL
+        sync: false
+      # Neon exige SSL.
+      - key: DB_SSL
+        value: "true"
+      # Render genera un secreto seguro automaticamente.
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRES
+        value: "7d"
