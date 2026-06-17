@@ -1,0 +1,27 @@
+==========================================================
+ PLANTILLA DE VARIABLES DE ENTORNO (.env)
+ Crea un archivo llamado ".env" en esta carpeta y pega
+ estas variables con TUS valores. Nunca lo subas a git.
+==========================================================
+
+# Puerto (Render/Railway lo inyectan solos)
+PORT=3000
+
+# --- OPCION A: PostgreSQL local ---
+DB_HOST=localhost
+DB_PORT=5432
+DB_NAME=crud_empresas
+DB_USER=postgres
+DB_PASS=tu_password_local
+DB_SSL=false
+
+# --- OPCION B: base de datos en la nube (Neon / Supabase / RDS) ---
+# Si defines DATABASE_URL tiene prioridad sobre las DB_* de arriba.
+# Neon:     postgresql://user:pass@ep-xxx.neon.tech/dbname?sslmode=require
+# Supabase: postgresql://postgres:pass@db.xxx.supabase.co:5432/postgres
+# DATABASE_URL=postgresql://usuario:password@host:5432/basededatos
+# DB_SSL=true
+
+# --- Seguridad JWT ---
+JWT_SECRET=cambia_esto_por_un_secreto_largo_y_aleatorio
+JWT_EXPIRES=7d
