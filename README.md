@@ -46,10 +46,14 @@ flutter run            --dart-define=API_BASE_URL=http://10.0.2.2:3000/api  # em
 
 ## Demo en produccion
 
+- **App (GitHub Pages):** https://marko1910.github.io/APP_flutter1/
 - **Backend (Render):** https://crud-empresas-api.onrender.com
 - **Base de datos:** Neon (PostgreSQL en la nube)
 
-> Nota: el plan free de Render "duerme" tras inactividad; la primera peticion puede tardar ~50s en despertar.
+Stack completo en la nube: frontend (GitHub Pages) -> backend (Render) -> base de datos (Neon).
+
+> Nota: el plan free de Render "duerme" tras inactividad; la primera peticion
+> (login) puede tardar ~50s en despertar. Vuelve a intentar si la primera falla.
 
 ## Variables de entorno (backend)
 
